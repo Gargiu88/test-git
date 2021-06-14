@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <form (ngSubmit)="saveUser()" [formGroup]="form">
+    <div class="row">
+      <div class="col-2" style="padding-top: 5mm;">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="user">
+          <mat-error>Inserire username</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-2" style="padding-left: 30mm; padding-top: 5mm;">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" (input)="checkEmail()">
+          <mat-error>
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-2" style="padding-left: 80mm; padding-top: 5mm;">
+        <button mat-raised-button matTooltip={{ipAddress}}
+                    aria-label="Button that displays a tooltip when focused or hovered over">
+                    Indirizzo IP
+                </button>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 5mm;">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Referente</mat-label>
+          <mat-select formControlName="optional">
+            <mat-option value="Marco">Marco</mat-option>
+            <mat-option value="Giuseppe">Giuseppe</mat-option>
+            <mat-option value="Salvatore">Salvatore</mat-option>
+            <mat-option value="Luca">Luca</mat-option>
+            <mat-option value="Mirko">Mirko</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <div class="example-button-container">
+          <button mat-mini-fab color="primary" type="submit">
+            <mat-icon>plus_one</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row" style="padding-top: 10mm;">
+    <div class="col-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Referente</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of listUsers; index as i">
+            <td> {{user.username}}
+            </td>
+            <td>
+              {{user.email}}
+            </td>
+            <td>
+              {{user.optional}} 
+            </td>
+            <td>
+              <button mat-raised-button color="warn"
+              (click)="deleteUser(i)">Delete user</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
