@@ -12,7 +12,7 @@ import { IndirizzoIP } from '../indirizzoIP.service';
 
 export class UsersComponent implements OnInit {
   ipAddress = '';
-  listUsers: Array<any> = [];
+  listUsers = [];
   form: FormGroup;
   constructor(public fb: FormBuilder, public http: IndirizzoIP) {
     this.form = fb.group({
